@@ -5,9 +5,9 @@ import {configureTestSuite} from 'ng-bullet';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
-const headlineSelector = 'div[data-test-id=\'headline\']';
-const subHeadlineSelector = 'div[data-test-id=\'subheadline\']';
-const mapSelector = 'app-map[data-test-id=\'map\']';
+const headlineSelector = 'div[data-testid=\'headline\']';
+const subHeadlineSelector = 'div[data-testid=\'subheadline\']';
+const mapSelector = 'app-map[data-testid=\'map\']';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;

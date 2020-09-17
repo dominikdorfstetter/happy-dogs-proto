@@ -5,6 +5,7 @@ import {of} from 'rxjs';
 import {APIResponse} from '@shared/models/api-response.model';
 import * as L from 'leaflet';
 import {TestBed} from '@angular/core/testing';
+import {LocalStorageMock} from '@shared/mock/localstorage.mock';
 
 const MOCK_FEATURE = {
   geometry: {
@@ -50,6 +51,10 @@ describe('ApiService', () => {
     addMarkerToMapSpy.mockImplementation(() => {
     });
 
+    Object.defineProperty(global, 'localStorage', {writable: true});
+    // noinspection JSConstantReassignment
+    global.localStorage = new LocalStorageMock();
+
     TestBed.configureTestingModule({
       providers: [
         ApiService,
@@ -59,38 +64,94 @@ describe('ApiService', () => {
     service = TestBed.inject(ApiService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should be defined', () => {
+    expect(service).toBeDefined();
   });
 
-  it('should fetch waterfountain data', () => {
-    service.addWaterFountains(map);
-    expect(httpGetSpy).toBeCalledTimes(1);
-    expect(addMarkerToMapSpy).toBeCalledTimes(2);
-  });
-
-  it('should fetch poobag data', () => {
-    service.addPoobags(map);
-    expect(httpGetSpy).toBeCalledTimes(1);
-    expect(addMarkerToMapSpy).toBeCalledTimes(2);
-  });
-
-  it('should fetch dogzone data', () => {
-    httpGetSpy.mockReturnValueOnce(
-      of({
-        ...MOCK_RESPONSE,
-        features: [
-          {
-            ...MOCK_FEATURE,
-            properties: {
-              TYP: 'Hundezone',
-            },
+  describe('WaterfountainData', () => {
+    const API_RESPONSE = {
+      ...MOCK_RESPONSE,
+      features: [
+        {
+          ...MOCK_FEATURE,
+          properties: {
+            NAME: 'Auslaufbrunnen',
           },
-        ],
-      })
-    );
-    service.addDogzones(map);
-    expect(httpGetSpy).toBeCalledTimes(1);
-    expect(addMarkerToMapSpy).toBeCalledTimes(1);
+        },
+      ],
+    };
+
+    it('should call http get once, without cache', () => {
+      httpGetSpy.mockReturnValueOnce(
+        of(API_RESPONSE)
+      );
+      service.addWaterFountains(map);
+      expect(httpGetSpy).toBeCalledTimes(1);
+    });
+
+    it('should add 2 markers to the map, without cache', () => {
+      httpGetSpy.mockReturnValueOnce(
+        of(API_RESPONSE)
+      );
+      service.addWaterFountains(map);
+      expect(addMarkerToMapSpy).toBeCalledTimes(1);
+    });
+
+    it('should get data from cache', () => {
+      const storageKey = 'waterfountain_data';
+      // first set local storage
+      localStorage.setItem(storageKey, JSON.stringify(API_RESPONSE));
+      // set http get response also
+      httpGetSpy.mockReturnValueOnce(
+        of(API_RESPONSE)
+      );
+      const lsGetItemSpy = jest.spyOn(localStorage, 'getItem');
+
+      service.addWaterFountains(map);
+      expect(lsGetItemSpy).toHaveBeenCalledWith(storageKey);
+    });
+  });
+
+  describe('addPoobags', () => {
+    beforeEach(() => {
+      service.addPoobags(map);
+    });
+
+    it('should call http get once', () => {
+      expect(httpGetSpy).toBeCalledTimes(1);
+    });
+
+    it('should add 2 markers to the map', () => {
+      expect(addMarkerToMapSpy).toBeCalledTimes(2);
+    });
+  });
+
+  describe('DogzoneData', () => {
+    const API_RESPONSE = {
+      ...MOCK_RESPONSE,
+      features: [
+        {
+          ...MOCK_FEATURE,
+          properties: {
+            TYP: 'Hundezone',
+          },
+        },
+      ],
+    };
+
+    beforeEach(() => {
+      httpGetSpy.mockReturnValueOnce(
+        of(API_RESPONSE)
+      );
+      service.addDogzones(map);
+    });
+
+    it('should call http get once', () => {
+      expect(httpGetSpy).toBeCalledTimes(1);
+    });
+
+    it('should add a marker to the map', () => {
+      expect(addMarkerToMapSpy).toBeCalledTimes(1);
+    });
   });
 });

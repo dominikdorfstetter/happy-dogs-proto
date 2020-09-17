@@ -51,7 +51,7 @@ describe('MapComponent', () => {
     expect(addDogzonesSpy).toHaveBeenNthCalledWith(1, component.map);
   });
 
-  it('should call addPoobags', () => {
+  xit('should call addPoobags', () => {
     expect(addPoobagsSpy).toHaveBeenNthCalledWith(1, component.map);
   });
 

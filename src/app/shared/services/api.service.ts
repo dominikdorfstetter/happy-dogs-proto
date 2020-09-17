@@ -63,18 +63,21 @@ export class ApiService {
   addWaterFountains(map: L.map): void {
     const cacheID = 'waterfountain_data';
 
-    this.getData$<APIResponse>(cacheID, API_WATERFOUNTAINS_VIENNA).subscribe(
-      (data: APIResponse) => {
-        data.features.forEach((el: Feature) => {
-          this.markerS.addMarkerToMap(
-            map,
-            el.geometry.coordinates,
-            ICON_WATERFOUNTAIN
-          );
-        });
-        ApiService.setCache(cacheID, data);
-      }
-    );
+    this.getData$<APIResponse>(cacheID, API_WATERFOUNTAINS_VIENNA)
+      .subscribe(
+        (data: APIResponse) => {
+          data.features.forEach((el: Feature) => {
+            if (el.properties.NAME === 'Auslaufbrunnen') {
+              this.markerS.addMarkerToMap(
+                map,
+                el.geometry.coordinates,
+                ICON_WATERFOUNTAIN
+              );
+            }
+          });
+          ApiService.setCache(cacheID, data);
+        }
+      );
   }
 
   /**
