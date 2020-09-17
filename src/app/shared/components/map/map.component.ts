@@ -22,7 +22,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.getGeoLocation();
     this.apiS.addWaterFountains(this.map);
     this.apiS.addDogzones(this.map);
-    this.apiS.addPoobags(this.map);
+    // this.apiS.addPoobags(this.map);
   }
 
   private initMap(): void {
