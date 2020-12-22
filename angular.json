@@ -105,5 +105,8 @@
       }
     }
   },
-  "defaultProject": "happy-dogs-proto"
+  "defaultProject": "happy-dogs-proto",
+  "cli": {
+    "analytics": "9369a41f-7709-4e92-8285-00cbbbe0f213"
+  }
 }
