@@ -1,25 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {filter, take} from 'rxjs/operators';
-import {APIResponse, Feature} from '@shared/models/api-response.model';
-import {
-  ICON_WATERFOUNTAIN,
-  ICON_DOGZONE,
-  ICON_DOGGYBAG,
-} from '@shared/marker.constants';
-import {HttpClient} from '@angular/common/http';
-import {MarkerService} from '@shared/services/marker.service';
-import * as L from 'leaflet';
-
-const API_DOGZONES_VIENNA =
-  'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0' +
-  '&typeName=ogdwien:HUNDEZONEOGD&srsName=EPSG:4326&outputFormat=json';
-const API_WATERFOUNTAINS_VIENNA =
-  'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0' +
-  '&typeName=ogdwien:TRINKBRUNNENOGD&srsName=EPSG:4326&outputFormat=json';
-const API_DOGGYBAG_VIENNA =
-  'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0' +
-  '&typeName=ogdwien:HUNDESACKERLOGD&srsName=EPSG:4326&outputFormat=json';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { StreetDataResponse } from '@shared/models/street-data.model';
+import { CacheItem } from '@shared/models/cache-item.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,14 +14,16 @@ export class ApiService {
    * @param cacheID Cache ID
    * @param data any data
    */
-  private static setCache(cacheID: string, data: any): void {
-    if (data) {
-      localStorage.setItem(cacheID, JSON.stringify(data));
+  static setCache<T>(cacheID: string, data: T): void {
+    const cacheItem = JSON.parse(localStorage.getItem(cacheID)) as CacheItem<T>;
+    const cacheItemData = cacheItem.getData() as T;
+
+    if (!!data && !!cacheItem && !cacheItem.getData()) {
+      localStorage.setItem(cacheID, JSON.stringify(new CacheItem<T>(data)));
     }
   }
 
-  constructor(private http: HttpClient, private markerS: MarkerService) {
-  }
+  constructor(private http: HttpClient) {}
 
   /**
    * Gets data via httpClient but checks if data is cached
@@ -45,82 +31,39 @@ export class ApiService {
    * @param cacheID cache ID
    * @param url URL to get data from
    */
-  private getData$<T>(cacheID: string, url: string): Observable<T> {
-    if (!localStorage.getItem(cacheID)) {
-      return this.http.get<T>(url).pipe(
-        filter((data: T) => !!data),
-        take(1)
-      );
+  public getDataCheckCache$<T>(url: string, cacheID: string = null): Observable<T> {
+    if (!!cacheID) {
+      if (!localStorage.getItem(cacheID)) {
+        return this.getData$<T>(url);
+      } else {
+        let cacheItem = JSON.parse(localStorage.getItem(cacheID)) as any;
+        cacheItem = new CacheItem<T>(cacheItem.pData, cacheItem.valid);
+        return !!cacheItem.getData() ? of(cacheItem.getData()) : this.getData$<T>(url);
+      }
     } else {
-      return of(JSON.parse(localStorage.getItem(cacheID))) as Observable<T>;
+      return this.getData$<T>(url);
     }
   }
 
   /**
-   * Fetches waterfountain data from vienna and places map marker
-   * @param map Leaflet map
+   * Fetches data from URL
+   * @param url URL to get data from
+   * @private
    */
-  addWaterFountains(map: L.map): void {
-    const cacheID = 'waterfountain_data';
-
-    this.getData$<APIResponse>(cacheID, API_WATERFOUNTAINS_VIENNA)
-      .subscribe(
-        (data: APIResponse) => {
-          data.features.forEach((el: Feature) => {
-            if (el.properties.NAME === 'Auslaufbrunnen') {
-              this.markerS.addMarkerToMap(
-                map,
-                el.geometry.coordinates,
-                ICON_WATERFOUNTAIN
-              );
-            }
-          });
-          ApiService.setCache(cacheID, data);
-        }
-      );
-  }
-
-  /**
-   * Fetches dog zone data from vienna and places map marker
-   * @param map Leaflet map
-   */
-  addDogzones(map: L.map): void {
-    const cacheID = 'dogzone_data';
-
-    this.getData$<APIResponse>(cacheID, API_DOGZONES_VIENNA).subscribe(
-      (data: APIResponse) => {
-        data.features.forEach((el: Feature) => {
-          if (el.properties.TYP === 'Hundezone') {
-            this.markerS.addMarkerToMap(
-              map,
-              el.geometry.coordinates,
-              ICON_DOGZONE
-            );
-          }
-        });
-        ApiService.setCache(cacheID, data);
-      }
+  private getData$<T>(url: string): Observable<T> {
+    return this.http.get<T>(url).pipe(
+      filter((data: T) => !!data),
+      take(1)
     );
   }
 
   /**
-   * Fetches doggy bag data from vienna and places map marker
-   * @param map Leaflet map
+   * Fetches street data from open data Austria
+   * URL: https://data.wien.gv.at/daten/OGDAddressService.svc/GetAddressInfo?Address=
+   * @param searchText text to query for
    */
-  addPoobags(map: L.map): void {
-    const cacheID = 'poobag_data';
-
-    this.getData$(cacheID, API_DOGGYBAG_VIENNA).subscribe(
-      (data: APIResponse) => {
-        data.features.forEach((el: Feature) => {
-          this.markerS.addMarkerToMap(
-            map,
-            el.geometry.coordinates,
-            ICON_DOGGYBAG
-          );
-        });
-        ApiService.setCache(cacheID, data);
-      }
-    );
+  getStreetData(searchText: string): Observable<StreetDataResponse> {
+    const URL = `https://data.wien.gv.at/daten/OGDAddressService.svc/GetAddressInfo?Address=${searchText}`;
+    return this.getData$<StreetDataResponse>(URL);
   }
 }

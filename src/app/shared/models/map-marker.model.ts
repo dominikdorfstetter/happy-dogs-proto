@@ -20,7 +20,7 @@ export interface Crs {
   properties: Properties2;
 }
 
-export interface APIResponse {
+export interface MapMarkerResponse {
   type: string;
   totalFeatures: number;
   features: Feature[];

@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite} from 'ng-bullet';
-import {MapComponent} from './map.component';
-import {ApiService} from '@shared/services/api.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { configureTestSuite } from 'ng-bullet';
+import { MapComponent } from './map.component';
+import { ApiService } from '@shared/services/api.service';
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -25,7 +25,7 @@ describe('MapComponent', () => {
     TestBed.configureTestingModule({
       declarations: [MapComponent],
       imports: [],
-      providers: [{provide: ApiService, useValue: apiService}]
+      providers: [{ provide: ApiService, useValue: apiService }],
     });
   });
 
@@ -51,8 +51,11 @@ describe('MapComponent', () => {
     expect(addDogzonesSpy).toHaveBeenNthCalledWith(1, component.map);
   });
 
+  it('should run getGeolocation', () => {
+    (component as any).getGeoLocation();
+  });
+
   xit('should call addPoobags', () => {
     expect(addPoobagsSpy).toHaveBeenNthCalledWith(1, component.map);
   });
-
 });
