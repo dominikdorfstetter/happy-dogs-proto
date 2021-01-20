@@ -18,11 +18,10 @@ export class ApiService {
    * @param data any data
    */
   static setCache<T>(cacheID: string, data: T): void {
-    const cacheItem = JSON.parse(localStorage.getItem(cacheID)) as CacheItem<T>;
-    const cacheItemData = cacheItem.getData() as T;
+    const cacheItem: T = !!localStorage.getItem(cacheID) ? (JSON.parse(localStorage.getItem(cacheID)) as T) : null;
 
-    if (!!data && !!cacheItem && !cacheItem.getData()) {
-      localStorage.setItem(cacheID, JSON.stringify(new CacheItem<T>(data)));
+    if (data && !cacheItem) {
+      localStorage.setItem(cacheID, JSON.stringify(data));
     }
   }
 
@@ -33,14 +32,17 @@ export class ApiService {
    * @param cacheID cache ID
    * @param url URL to get data from
    */
-  public getDataCheckCache$<T>(url: string, cacheID: string = null): Observable<T> {
-    if (!!cacheID) {
+  getDataCheckCache$<T>(url: string, cacheID: string = null): Observable<T> {
+    if (cacheID) {
       if (!localStorage.getItem(cacheID)) {
         return this.getData$<T>(url);
       } else {
-        let cacheItem = JSON.parse(localStorage.getItem(cacheID)) as any;
-        cacheItem = new CacheItem<T>(cacheItem.pData, cacheItem.valid);
-        return !!cacheItem.getData() ? of(cacheItem.getData()) : this.getData$<T>(url);
+        const cacheItem = JSON.parse(localStorage.getItem(cacheID)) as T;
+        if (cacheItem) {
+          return of(cacheItem);
+        } else {
+          return this.getData$<T>(url);
+        }
       }
     } else {
       return this.getData$<T>(url);
