@@ -72,7 +72,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run pretty && git add .",
-      "pre-push": "npm run test && npm run build"
+      "pre-push": "npm run lint && npm run test && npm run build"
     }
   }
 }
