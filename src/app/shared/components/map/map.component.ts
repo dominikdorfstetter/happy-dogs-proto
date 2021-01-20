@@ -45,7 +45,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     const map = this.map;
     map.locate({ setView: true });
 
-    // tslint:disable-next-line:typedef
+    // eslint-disable-next-line
     function onLocationFound(e) {
       const radius = e.accuracy / 2;
       const circle = L.circle(e.latlng, radius);

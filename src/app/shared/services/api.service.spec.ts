@@ -11,6 +11,7 @@ const MOCK_FEATURE = {
   geometry: {
     coordinates: [0, 0],
   },
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   geometry_name: 'test',
   id: 'test',
   properties: {},
@@ -31,7 +32,7 @@ describe('ApiService', () => {
   let service: ApiService;
   let markerS: MarkerService;
   let http: HttpClient;
-  // tslint:disable-next-line:prefer-const
+  // eslint-disable-next-line prefer-const
   let map: L.map;
   let httpGetSpy: jest.SpyInstance;
   let addMarkerToMapSpy: jest.SpyInstance;
@@ -70,6 +71,7 @@ describe('ApiService', () => {
         {
           ...MOCK_FEATURE,
           properties: {
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             NAME: 'Auslaufbrunnen',
           },
         },
@@ -122,6 +124,7 @@ describe('ApiService', () => {
         {
           ...MOCK_FEATURE,
           properties: {
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             TYP: 'Hundezone',
           },
         },

@@ -7,6 +7,7 @@ export interface Feature {
   type: string;
   id: string;
   geometry: Geometry;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   geometry_name: string;
   properties: any;
 }

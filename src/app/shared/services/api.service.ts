@@ -9,8 +9,11 @@ import { CacheItem } from '@shared/models/cache-item.model';
   providedIn: 'root',
 })
 export class ApiService {
+  constructor(private http: HttpClient) {}
+
   /**
    * Writes data to localStorage
+   *
    * @param cacheID Cache ID
    * @param data any data
    */
@@ -23,11 +26,10 @@ export class ApiService {
     }
   }
 
-  constructor(private http: HttpClient) {}
-
   /**
    * Gets data via httpClient but checks if data is cached
    * If data is cached returns an observable of the cache-data instead
+   *
    * @param cacheID cache ID
    * @param url URL to get data from
    */
@@ -46,7 +48,19 @@ export class ApiService {
   }
 
   /**
+   * Fetches street data from open data Austria
+   * URL: https://data.wien.gv.at/daten/OGDAddressService.svc/GetAddressInfo?Address=
+   *
+   * @param searchText text to query for
+   */
+  getStreetData(searchText: string): Observable<StreetDataResponse> {
+    const URL = `https://data.wien.gv.at/daten/OGDAddressService.svc/GetAddressInfo?Address=${searchText}`;
+    return this.getData$<StreetDataResponse>(URL);
+  }
+
+  /**
    * Fetches data from URL
+   *
    * @param url URL to get data from
    * @private
    */
@@ -55,15 +69,5 @@ export class ApiService {
       filter((data: T) => !!data),
       take(1)
     );
-  }
-
-  /**
-   * Fetches street data from open data Austria
-   * URL: https://data.wien.gv.at/daten/OGDAddressService.svc/GetAddressInfo?Address=
-   * @param searchText text to query for
-   */
-  getStreetData(searchText: string): Observable<StreetDataResponse> {
-    const URL = `https://data.wien.gv.at/daten/OGDAddressService.svc/GetAddressInfo?Address=${searchText}`;
-    return this.getData$<StreetDataResponse>(URL);
   }
 }

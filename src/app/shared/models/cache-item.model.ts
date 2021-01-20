@@ -16,6 +16,7 @@ export class CacheItem<T> implements ICacheItem<T> {
 
   /**
    * Checks if cache item is still valid
+   *
    * @returns null if cache item is too old, data if valid
    */
   getData(): T | null {
