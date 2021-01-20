@@ -5,18 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from '@shared/components/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ClarityModule } from '@clr/angular';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MapComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, MapComponent],
+  imports: [BrowserModule, HttpClientModule, ClarityModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

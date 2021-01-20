@@ -7,6 +7,7 @@ export interface Feature {
   type: string;
   id: string;
   geometry: Geometry;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   geometry_name: string;
   properties: any;
 }
@@ -20,7 +21,7 @@ export interface Crs {
   properties: Properties2;
 }
 
-export interface APIResponse {
+export interface MapMarkerResponse {
   type: string;
   totalFeatures: number;
   features: Feature[];
