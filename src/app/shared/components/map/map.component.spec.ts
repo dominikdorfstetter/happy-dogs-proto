@@ -1,31 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { configureTestSuite } from 'ng-bullet';
 import { MapComponent } from './map.component';
-import { ApiService } from '@shared/services/api.service';
+import { MarkerService } from '@shared/services/marker.service';
 
 describe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
-  let apiService: any;
+  let markerS: any;
   let addWaterFountainSpy: jest.SpyInstance;
-  let addPoobagsSpy: jest.SpyInstance;
   let addDogzonesSpy: jest.SpyInstance;
 
   configureTestSuite(() => {
-    apiService = {
+    markerS = {
       addWaterFountains: () => jest.fn(),
       addDogzones: () => jest.fn(),
-      addPoobags: () => jest.fn(),
     } as any;
 
-    addWaterFountainSpy = jest.spyOn(apiService, 'addWaterFountains');
-    addPoobagsSpy = jest.spyOn(apiService, 'addPoobags');
-    addDogzonesSpy = jest.spyOn(apiService, 'addDogzones');
+    addWaterFountainSpy = jest.spyOn(markerS, 'addWaterFountains');
+    addDogzonesSpy = jest.spyOn(markerS, 'addDogzones');
 
     TestBed.configureTestingModule({
       declarations: [MapComponent],
       imports: [],
-      providers: [{ provide: ApiService, useValue: apiService }],
+      providers: [{ provide: MarkerService, useValue: markerS }],
     });
   });
 
@@ -53,9 +50,5 @@ describe('MapComponent', () => {
 
   it('should run getGeolocation', () => {
     (component as any).getGeoLocation();
-  });
-
-  xit('should call addPoobags', () => {
-    expect(addPoobagsSpy).toHaveBeenNthCalledWith(1, component.map);
   });
 });
