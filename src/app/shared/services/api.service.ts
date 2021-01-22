@@ -66,7 +66,7 @@ export class ApiService {
    * @param url URL to get data from
    * @private
    */
-  private getData$<T>(url: string): Observable<T> {
+  getData$<T>(url: string): Observable<T> {
     return this.http.get<T>(url).pipe(
       filter((data: T) => !!data),
       take(1)

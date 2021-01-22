@@ -21,8 +21,6 @@ Z
 *src/app/shared/models/street-data.model.ts,8\b\8b615ba056cebade3e8b93b07ffc55543abdabcc
 X
 (src/app/shared/mock/localstorage.mock.ts,3\4\344689b385828e102aee0356bbdb5e03e218aa9f
-`
-0src/app/shared/interceptors/cache.interceptor.ts,b\e\bedcc5b8b231727847c779d7f374153a76cd6506
 ^
 .src/app/shared/components/map/map.component.ts,1\8\181b32ac100809929308cd6f3844681745c1179c
 `
@@ -50,3 +48,19 @@ R
 "src/app/shared/marker.constants.ts,d\4\d4b98af875dc493ba93e4ba8870cab654f5faa09
 ;
 src/test.ts,3\f\3fc80f76f5f2902335ccfa4f7aa372099c7d9f47
+J
+src/app/app.component.html,0\6\06895b2dfff011115a8eded7e3fad29788965566
+E
+src/app/app.module.ts,0\2\02c004b4329a0d99c45abb61a30dadfde61ecf5d
+H
+src/app/app.component.ts,3\0\302be76b17ec3188653bea112207e65dde129e59
+D
+proxy-mock.conf.json,0\8\0871b546601cdb2df22b60df16c11ea01c6bb681
+?
+proxy.conf.json,a\9\a9d0241d853eb692fff5c7f7ed7019e0ece47950
+>
+mocks/api.json,d\3\d3669b1a9c10761765ae39fbccf17a1bc3dcadc7
+O
+src/environments/environment.ts,9\e\9e665cec867bbf89b5afc6420722808938387dc4
+T
+$src/environments/environment.prod.ts,c\7\c7c271980f0e24b4ca8172b2c15322f125123fad

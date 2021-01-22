@@ -5,6 +5,9 @@
 export const environment = {
   production: false,
   cacheTTL: 31,
+  dogzonesAPI: '/api/dogzones',
+  waterfountainsAPI: '/api/waterfountains',
+  poobagAPI: '/api/poobags',
 };
 
 /*

@@ -1,6 +1,26 @@
 {
-  "/api": {
-    "target": "http://localhost:8081",
-    "secure": false
+  "/api/waterfountains": {
+    "target": "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TRINKBRUNNENOGD&srsName=EPSG:4326&outputFormat=json",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/waterfountains": ""
+    },
+    "logLevel": "error"
+  },
+  "/api/dogzones": {
+    "target": "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:HUNDEZONEOGD&srsName=EPSG:4326&outputFormat=json",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/dogzones": ""
+    },
+    "logLevel": "debug"
+  },
+  "/api/poobags": {
+    "target": "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:HUNDESACKERLOGD&srsName=EPSG:4326&outputFormat=json",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/poobags": ""
+    },
+    "logLevel": "debug"
   }
 }

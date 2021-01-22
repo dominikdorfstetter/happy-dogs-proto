@@ -1,0 +1,26 @@
+{
+  "/api/waterfountains": {
+    "target": "http://localhost:3000/waterfountains",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/waterfountains": ""
+    },
+    "logLevel": "debug"
+  },
+  "/api/dogzones": {
+    "target": "http://localhost:3000/dogzones",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/dogzones": ""
+    },
+    "logLevel": "debug"
+  },
+  "/api/poobags": {
+    "target": "http://localhost:3000/poobags",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/dogzones": ""
+    },
+    "logLevel": "debug"
+  }
+}

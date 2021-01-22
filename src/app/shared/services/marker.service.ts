@@ -3,16 +3,12 @@ import * as L from 'leaflet';
 import { Feature, MapMarkerResponse } from '@shared/models/map-marker.model';
 import { ICON_DOGGYBAG, ICON_DOGZONE, ICON_WATERFOUNTAIN } from '@shared/marker.constants';
 import { ApiService } from '@shared/services/api.service';
+import { map } from 'rxjs/operators';
+import { environment } from '@env/environment';
 
-export const API_DOGZONES_VIENNA =
-  // eslint-disable-next-line max-len
-  `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:HUNDEZONEOGD&srsName=EPSG:4326&outputFormat=json`;
-export const API_WATERFOUNTAINS_VIENNA =
-  // eslint-disable-next-line max-len
-  `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TRINKBRUNNENOGD&srsName=EPSG:4326&outputFormat=json`;
-export const API_DOGGYBAG_VIENNA =
-  // eslint-disable-next-line max-len
-  `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:HUNDESACKERLOGD&srsName=EPSG:4326&outputFormat=json`;
+const API_DOGZONES_VIENNA = environment.dogzonesAPI;
+const API_WATERFOUNTAINS_VIENNA = environment.waterfountainsAPI;
+const API_DOGGYBAG_VIENNA = environment.poobagAPI;
 
 @Injectable({
   providedIn: 'root',
@@ -34,23 +30,26 @@ export class MarkerService {
   /**
    * Fetches waterfountain data from vienna and places map marker
    *
-   * @param map Leaflet map
+   * @param karte Leaflet map
    */
-  addWaterFountains(map: L.map): void {
+  addWaterFountains(karte: L.map): void {
     const cacheID = 'waterfountain_data';
-    const observable$ = this.apiService.getDataCheckCache$<MapMarkerResponse>(API_WATERFOUNTAINS_VIENNA, cacheID).pipe(
-      map((data: MapMarkerResponse) => {
-        console.log(data);
-        return data;
-      }).subscribe((data: MapMarkerResponse) => {
+    const observable$ = this.apiService
+      .getData$<MapMarkerResponse>(API_WATERFOUNTAINS_VIENNA)
+      .pipe(
+        map((data: MapMarkerResponse) => {
+          console.log(data);
+          return data;
+        })
+      )
+      .subscribe((data: MapMarkerResponse) => {
         data.features.forEach((el: Feature) => {
           if (el.properties.NAME === 'Auslaufbrunnen') {
-            this.addMarkerToMap(map, el.geometry.coordinates, ICON_WATERFOUNTAIN);
+            this.addMarkerToMap(karte, el.geometry.coordinates, ICON_WATERFOUNTAIN);
           }
         });
         ApiService.setCache<MapMarkerResponse>(cacheID, data);
-      })
-    );
+      });
   }
 
   /**
@@ -58,19 +57,17 @@ export class MarkerService {
    *
    * @param map Leaflet map
    */
-  addDogzones(map: L.map): void {
+  addDogzones(karte: L.map): void {
     const cacheID = 'dogzone_data';
 
-    this.apiService
-      .getDataCheckCache$<MapMarkerResponse>(API_DOGZONES_VIENNA, cacheID)
-      .subscribe((data: MapMarkerResponse) => {
-        data.features.forEach((el: Feature) => {
-          if (el.properties.TYP === 'Hundezone') {
-            this.addMarkerToMap(map, el.geometry.coordinates, ICON_DOGZONE);
-          }
-        });
-        ApiService.setCache<MapMarkerResponse>(cacheID, data);
+    this.apiService.getData$<MapMarkerResponse>(API_DOGZONES_VIENNA).subscribe((data: MapMarkerResponse) => {
+      data.features.forEach((el: Feature) => {
+        if (el.properties.TYP === 'Hundezone') {
+          this.addMarkerToMap(karte, el.geometry.coordinates, ICON_DOGZONE);
+        }
       });
+      ApiService.setCache<MapMarkerResponse>(cacheID, data);
+    });
   }
 
   /**
