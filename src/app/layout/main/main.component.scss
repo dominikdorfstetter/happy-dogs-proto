@@ -1,4 +1,4 @@
-.map-container {
+.content-area {
   display: flex;
   display: -webkit-box;
   display: -moz-box;
@@ -6,18 +6,11 @@
   display: -webkit-flex;
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
   margin: 0;
-  padding-top: 1em;
+  padding: 1em;
 }
 
-.map-frame {
+.content-container {
   height: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-#map {
-  height: 50vh;
-  width: 80vh;
-  outline: none;
 }

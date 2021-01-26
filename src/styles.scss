@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~leaflet/dist/leaflet.css";
-:root {
-    font-size: 10px;
+@import '~leaflet/dist/leaflet.css';
+html {
+  /* for 3.0 and later versions, divide the preferred root value by 1.2 to get a pixel
+   * equivalency
+   */
+  font-size: calc(20px / 1.2);
 }

@@ -23,8 +23,8 @@ export class MarkerService {
    * @param [lat, lng] latitude, longitude
    * @param icon Leaflet Icon
    */
-  public addMarkerToMap(map: L.map, [lat, lng]: number[], icon: L.icon): void {
-    L.marker([lng, lat], { icon }).addTo(map);
+  public addMarkerToMap(smap: L.map, [lat, lng]: number[], icon: L.icon): void {
+    L.marker([lng, lat], { icon }).addTo(smap);
   }
 
   /**
@@ -57,13 +57,14 @@ export class MarkerService {
    *
    * @param map Leaflet map
    */
-  addDogzones(karte: L.map): void {
+  // eslint-disable-next-line no-shadow
+  addDogzones(map: L.map): void {
     const cacheID = 'dogzone_data';
 
     this.apiService.getData$<MapMarkerResponse>(API_DOGZONES_VIENNA).subscribe((data: MapMarkerResponse) => {
       data.features.forEach((el: Feature) => {
         if (el.properties.TYP === 'Hundezone') {
-          this.addMarkerToMap(karte, el.geometry.coordinates, ICON_DOGZONE);
+          this.addMarkerToMap(map, el.geometry.coordinates, ICON_DOGZONE);
         }
       });
       ApiService.setCache<MapMarkerResponse>(cacheID, data);
@@ -75,6 +76,7 @@ export class MarkerService {
    *
    * @param map Leaflet map
    */
+  // eslint-disable-next-line no-shadow
   addPoobags(map: L.map): void {
     const cacheID = 'poobag_data';
 

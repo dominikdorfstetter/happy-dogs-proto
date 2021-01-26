@@ -1,7 +1,16 @@
-<div class="box flex">
-  <div class="headline unselectable" data-testid="headline">Happy Dogs Prototype</div>
-</div>
-<div class="box flex">
-  <div class="subheadline unselectable" data-testid="subheadline">Shows you dog-zones & fountains for dogs in VIENNA(AT)</div>
-</div>
-<app-map data-testid="map"></app-map>
+<clr-main-container>
+  <app-menu></app-menu>
+  <app-main>
+    <div class="box flex">
+      <div class="headline unselectable" data-testid="headline">Happy Dogs</div>
+    </div>
+    <br />
+    <div class="box flex">
+      <div class="subheadline unselectable" data-testid="subheadline">
+        Search for an address or activate geolocation to show points of interest around you.
+      </div>
+    </div>
+    <app-map data-testid="map"></app-map>
+    <!--<app-loading></app-loading>-->
+  </app-main>
+</clr-main-container>

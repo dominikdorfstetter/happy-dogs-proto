@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ApiService } from '@shared/services/api.service';
 import * as L from 'leaflet';
 import { MarkerService } from '@shared/services/marker.service';
 
@@ -33,7 +32,6 @@ export class MapComponent implements OnInit, AfterViewInit {
       maxZoom: 25,
       id: 'mapbox/streets-v11',
       tileSize: 256,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       accessToken:
         'pk.eyJ1IjoiZG9taW5pa2RvcmZzdGV0dGVyIiwiYSI6ImNrZTQyOWk1NTBvankycW1zbHB3ZmI1ZzAifQ.Nn6ldXhhXF50Y2WNzdVgTg',
     });
