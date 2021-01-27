@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { configureTestSuite } from 'ng-bullet';
-import { MapComponent } from './map.component';
+import { MapDisplayComponent } from './mapbox.component';
 import { MarkerService } from '@shared/services/marker.service';
 
 describe('MapComponent', () => {
-  let component: MapComponent;
-  let fixture: ComponentFixture<MapComponent>;
+  let component: MapDisplayComponent;
+  let fixture: ComponentFixture<MapDisplayComponent>;
   let markerS: any;
   let addWaterFountainSpy: jest.SpyInstance;
   let addDogzonesSpy: jest.SpyInstance;
@@ -20,14 +20,14 @@ describe('MapComponent', () => {
     addDogzonesSpy = jest.spyOn(markerS, 'addDogzones');
 
     TestBed.configureTestingModule({
-      declarations: [MapComponent],
+      declarations: [MapDisplayComponent],
       imports: [],
       providers: [{ provide: MarkerService, useValue: markerS }],
     });
   });
 
   beforeAll(() => {
-    fixture = TestBed.createComponent(MapComponent);
+    fixture = TestBed.createComponent(MapDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -36,7 +36,7 @@ describe('MapComponent', () => {
     expect(component).toBeDefined();
   });
 
-  it('should initialize map', () => {
+  it('should initialize mapbox', () => {
     expect(component.map).toBeDefined();
   });
 

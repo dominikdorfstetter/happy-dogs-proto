@@ -64,3 +64,33 @@ O
 src/environments/environment.ts,9\e\9e665cec867bbf89b5afc6420722808938387dc4
 T
 $src/environments/environment.prod.ts,c\7\c7c271980f0e24b4ca8172b2c15322f125123fad
+U
+%src/app/layout/menu/menu.component.ts,a\e\ae5a514afe351e6ac89ce3c5c0a0bc6815c6c5a5
+[
++src/app/layout/footer/footer.component.html,3\0\30a92ec43cb5d88c08e596ac645fa3fa4c7c42ab
+h
+8src/app/shared/components/loading/loading.component.html,5\8\584631ef9ef12750cbbbd0f402777fad50e361e9
+f
+6src/app/shared/components/loading/loading.component.ts,a\7\a730bfe3a4966de5f125bc8a62ffa4e46cf5cacc
+h
+8src/app/shared/components/loading/loading.component.scss,6\a\6ae70a9e50bc48412c26d7bec985fd27c1904324
+O
+src/app/shared/shared.module.ts,7\6\76e4030e4964745a909dcfab91317c1bf0a020aa
+O
+src/app/layout/layout.module.ts,1\a\1aa1683db69441f5beb9294c548d2865983c153d
+]
+-src/app/layout/sidenav/sidenav.component.scss,8\5\850ed5aaaac64e25b207661c952a324da34b4785
+?
+src/styles.scss,6\a\6a36a191b6d613ce902a6e1beb58b65e8a5136ab
+W
+'src/app/layout/menu/menu.component.scss,5\1\510d0d8eac6473124ee69740e2a963cb0d91dd34
+W
+'src/app/layout/main/main.component.html,c\3\c317985e0b4fa16a8fb9a2b0af46927058ada07f
+]
+-src/app/layout/sidenav/sidenav.component.html,6\5\653308350cc09b63d7b6aa4372dada2da94c9b7a
+[
++src/app/layout/sidenav/sidenav.component.ts,4\d\4dcdd28e5ae3edf6bc1e3fbe51a42403db3928fc
+W
+'src/app/layout/menu/menu.component.html,9\7\978632803d247fa180832d7c6d773fd39a92a5b8
+W
+'src/app/layout/main/main.component.scss,c\9\c97aa6a46f53ecb643f6e20d010e97f2fb6a46b9

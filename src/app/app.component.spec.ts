@@ -9,7 +9,7 @@ import { ClarityModule } from '@clr/angular';
 
 const headlineSelector = "div[data-testid='headline']";
 const subHeadlineSelector = "div[data-testid='subheadline']";
-const mapSelector = "app-map[data-testid='map']";
+const mapSelector = "app-mapbox[data-testid='mapbox']";
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -43,7 +43,7 @@ describe('AppComponent', () => {
     expect(de.query(By.css(subHeadlineSelector))).toBeDefined();
   });
 
-  it('should display map', () => {
+  it('should display mapbox', () => {
     expect(de.query(By.css(mapSelector))).toBeDefined();
   });
 });

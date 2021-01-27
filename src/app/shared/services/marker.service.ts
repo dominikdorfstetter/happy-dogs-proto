@@ -28,9 +28,9 @@ export class MarkerService {
   }
 
   /**
-   * Fetches waterfountain data from vienna and places map marker
+   * Fetches waterfountain data from vienna and places mapbox marker
    *
-   * @param karte Leaflet map
+   * @param karte Leaflet mapbox
    */
   addWaterFountains(karte: L.map): void {
     const cacheID = 'waterfountain_data';
@@ -53,9 +53,9 @@ export class MarkerService {
   }
 
   /**
-   * Fetches dog zone data from vienna and places map marker
+   * Fetches dog zone data from vienna and places mapbox marker
    *
-   * @param map Leaflet map
+   * @param map Leaflet mapbox
    */
   // eslint-disable-next-line no-shadow
   addDogzones(map: L.map): void {
@@ -72,9 +72,9 @@ export class MarkerService {
   }
 
   /**
-   * Fetches doggy bag data from vienna and places map marker
+   * Fetches doggy bag data from vienna and places mapbox marker
    *
-   * @param map Leaflet map
+   * @param map Leaflet mapbox
    */
   // eslint-disable-next-line no-shadow
   addPoobags(map: L.map): void {

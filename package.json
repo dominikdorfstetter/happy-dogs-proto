@@ -34,6 +34,7 @@
     "rxjs": "~6.6.3",
     "ts-jest": "^26.3.0",
     "tslib": "^2.0.3",
+    "xregexp": "^4.4.1",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {

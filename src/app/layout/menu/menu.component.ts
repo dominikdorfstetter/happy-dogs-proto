@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  constructor() {}
+  toggleMenu: boolean;
+
+  constructor(private router: Router) {
+    this.toggleMenu = false;
+  }
 
   ngOnInit(): void {}
+
+  async navigate(route: string): Promise<any> {
+    return this.router.navigate([route]);
+  }
 }

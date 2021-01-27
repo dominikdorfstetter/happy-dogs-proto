@@ -6,7 +6,7 @@
   </div>
 
   <div class="header-nav">
-    <a href="javascript://" class="active nav-link nav-text">Dashboard</a>
+    <a [routerLink]="['/dashboard']" class="active nav-link nav-text">Dashboard</a>
   </div>
 
   <form class="search">
@@ -16,16 +16,28 @@
   </form>
 
   <div class="header-actions header-actions--overflow">
-    <div class="dropdown open">
-      <button class="nav-text dropdown-toggle" aria-label="open user profile" type="button">
-        max@mustermann.de&nbsp;&nbsp;<clr-icon shape="user" size="lg" badge="info"></clr-icon>
+    <div [ngClass]="toggleMenu ? 'dropdown open' : 'dropdown'">
+      <button
+        class="nav-text dropdown-toggle"
+        (click)="toggleMenu = !toggleMenu"
+        aria-label="open user profile"
+        type="button"
+      >
+        max@mustermann.de
       </button>
       <div class="dropdown-menu">
         <h4 class="dropdown-header">Account</h4>
-        <div class="dropdown-item"><clr-icon shape="cog" direction="down"></clr-icon>&nbsp;Settings</div>
+        <div class="dropdown-item" (click)="navigate('/pages/settings')">
+          <clr-icon shape="cog" direction="down"></clr-icon>&nbsp;Settings
+        </div>
         <div class="dropdown-divider" role="separator"></div>
         <h4 class="dropdown-header">Navigation</h4>
-        <div class="dropdown-item"><clr-icon shape="floppy" direction="down"></clr-icon>&nbsp;My routes</div>
+        <div class="dropdown-item" (click)="navigate('/pages/map')">
+          <clr-icon shape="user" direction="down"></clr-icon>&nbsp;Map
+        </div>
+        <div class="dropdown-item" (click)="navigate('/pages/routes')">
+          <clr-icon shape="floppy" direction="down"></clr-icon>&nbsp;My routes
+        </div>
         <div class="dropdown-item"><clr-icon shape="line-chart" direction="down"></clr-icon>&nbsp;Statistics</div>
         <div class="dropdown-divider" role="separator"></div>
         <button class="dropdown-item"><clr-icon shape="logout" direction="down"></clr-icon>&nbsp;Logout</button>

@@ -3,11 +3,11 @@ import * as L from 'leaflet';
 import { MarkerService } from '@shared/services/marker.service';
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss'],
+  selector: 'app-mapbox',
+  templateUrl: './mapbox.component.html',
+  styleUrls: ['./mapbox.component.scss'],
 })
-export class MapComponent implements OnInit, AfterViewInit {
+export class MapBoxComponent implements OnInit, AfterViewInit {
   map: L.map;
 
   constructor(private markerService: MarkerService) {}
@@ -20,7 +20,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.getGeoLocation();
     this.markerService.addWaterFountains(this.map);
     this.markerService.addDogzones(this.map);
-    // this.apiS.addPoobags(this.map);
+    // this.apiS.addPoobags(this.mapbox);
   }
 
   private initMap(): void {
