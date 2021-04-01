@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "happy-dogs-proto": {
+    "happydogs": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,13 +17,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/happy-dogs-proto",
+            "outputPath": "dist/happydogs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
+            "allowedCommonJsDependencies": ["@clr/angular"],
             "styles": [
               "node_modules/@clr/icons/clr-icons.min.css",
               "node_modules/@clr/ui/clr-ui.min.css",
@@ -46,9 +47,35 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": false,
+              "extractLicenses": false,
               "vendorChunk": false,
               "buildOptimizer": true,
               "budgets": [
@@ -69,18 +96,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "happy-dogs-proto:build"
+            "browserTarget": "happydogs:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "happy-dogs-proto:build:production"
+              "browserTarget": "happydogs:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "happy-dogs-proto:build"
+            "browserTarget": "happydogs:build"
           }
         },
         "lint": {
@@ -93,18 +120,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "happy-dogs-proto:serve"
+            "devServerTarget": "happydogs:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "happy-dogs-proto:serve:production"
+              "devServerTarget": "happydogs:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "happy-dogs-proto",
+  "defaultProject": "happydogs",
   "cli": {
     "analytics": "9369a41f-7709-4e92-8285-00cbbbe0f213"
   }

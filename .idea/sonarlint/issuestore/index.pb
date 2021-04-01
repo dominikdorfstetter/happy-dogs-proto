@@ -86,3 +86,5 @@ W
 'src/app/layout/menu/menu.component.html,9\7\978632803d247fa180832d7c6d773fd39a92a5b8
 W
 'src/app/layout/main/main.component.scss,c\9\c97aa6a46f53ecb643f6e20d010e97f2fb6a46b9
+F
+e2e/protractor.conf.js,1\a\1a16fe2e18a9184f190de09b2409856e085ce408

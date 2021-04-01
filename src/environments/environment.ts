@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   cacheTTL: 31,
+  version: '0.2.1-0',
   dogzonesAPI: '/api/dogzones',
   waterfountainsAPI: '/api/waterfountains',
   poobagAPI: '/api/poobags',
