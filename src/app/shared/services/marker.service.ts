@@ -32,12 +32,12 @@ export class MarkerService {
         tap((auslaufbrunnen: List<Feature>) => {
           auslaufbrunnen.map(addToMap(karte, ICON_WATERFOUNTAIN));
         }),
-        first()
-      ).subscribe({
-      next: null,
-      error: console.error,
-      complete: () => console.log('added Waterfountains to the map')
-    });
+        first())
+      .subscribe({
+        next: null,
+        error: console.error,
+        complete: () => console.log('added Waterfountains to the map')
+      });
   }
 
   /**
@@ -53,11 +53,12 @@ export class MarkerService {
           hundezonen.map(addToMap(karte, ICON_DOGZONE));
         }),
         first()
-      ).subscribe({
-      next: null,
-      error: console.error,
-      complete: () => console.log('added Dogzones to the map')
-    });
+      )
+      .subscribe({
+        next: null,
+        error: console.error,
+        complete: () => console.log('added Dogzones to the map')
+      });
   }
 
   /**
@@ -73,7 +74,8 @@ export class MarkerService {
           doggybags.map(addToMap(karte, ICON_DOGGYBAG));
         }),
         first()
-      ).subscribe({
+      )
+      .subscribe({
       next: null,
       error: console.error,
       complete: () => console.log('added Poobags to the map')

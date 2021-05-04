@@ -21,13 +21,9 @@ A
 tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
 A
 tsconfig.app.json,4\3\43dc209d69db416f8cba4f9850ff857de70532a2
->
-jest.config.js,8\8\881d5d47bdc17ef8facebef59b68b5fc099a0293
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
->
-.eslintrc.json,7\1\71c20a341bfe32aa5cd5b4384e94f942bab6a7d3
 R
 "src/app/shared/marker.constants.ts,d\4\d4b98af875dc493ba93e4ba8870cab654f5faa09
 ;
@@ -40,8 +36,6 @@ H
 src/app/app.component.ts,3\0\302be76b17ec3188653bea112207e65dde129e59
 ?
 proxy.conf.json,a\9\a9d0241d853eb692fff5c7f7ed7019e0ece47950
-O
-src/environments/environment.ts,9\e\9e665cec867bbf89b5afc6420722808938387dc4
 U
 %src/app/layout/menu/menu.component.ts,a\e\ae5a514afe351e6ac89ce3c5c0a0bc6815c6c5a5
 [
@@ -80,3 +74,5 @@ T
 $src/app/pages/map/map.component.scss,6\d\6ddcdb1e942bda654756eff0d37ea36b1fe3af9c
 Z
 *src/app/pages/mapbox/mapbox.component.html,1\6\16e399320e6c45b7705dc15da7f37e13054ac25e
+>
+mocks/api.json,d\3\d3669b1a9c10761765ae39fbccf17a1bc3dcadc7

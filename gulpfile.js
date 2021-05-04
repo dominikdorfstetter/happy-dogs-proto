@@ -24,6 +24,16 @@
   });
 
   /*
+    ----- BUMPS TO NEXT MINOR VERSION ----
+  */
+  gulp.task('ng-bump-patch', function () {
+    return gulp
+      .src('./package.json')
+      .pipe(bump({ type: 'patch' }))
+      .pipe(gulp.dest('./'));
+  });
+
+  /*
     ----- BUMPS TO NEXT PRERELEASE VERSION ----
   */
   gulp.task('ng-bump-prerelease', function () {
