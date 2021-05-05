@@ -24,14 +24,23 @@ export class MapBoxComponent implements OnInit, AfterViewInit {
   }
 
   private initMap(): void {
-    this.map = L.map('map').setView([48.210033, 16.363449], 18);
+    this.map = L.map('map', {
+      zoomControl: false,
+      preferCanvas: true,
+      markerZoomAnimation: true,
+      inertia: true,
+      center: [48.210033, 16.363449],
+      maxZoom: 19,
+      minZoom: 16,
+    });
   }
 
   private populateMap(): void {
     const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-      maxZoom: 25,
       id: 'mapbox/streets-v11',
-      tileSize: 256,
+      maxZoom: 19,
+      minZoom: 16,
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       accessToken:
         'pk.eyJ1IjoiZG9taW5pa2RvcmZzdGV0dGVyIiwiYSI6ImNrZTQyOWk1NTBvankycW1zbHB3ZmI1ZzAifQ.Nn6ldXhhXF50Y2WNzdVgTg',
     });
@@ -41,16 +50,21 @@ export class MapBoxComponent implements OnInit, AfterViewInit {
 
   private getGeoLocation(): void {
     const map = this.map;
-    map.locate({ setView: true });
+    map.locate({
+      setView: true,
+      watch: true,
+      timeout: 60000,
+      enableHighAccuracy: true
+    });
 
     // eslint-disable-next-line
     function onLocationFound(e) {
       const radius = e.accuracy / 2;
-      const circle = L.circle(e.latlng, radius);
+      //const circle = L.circle(e.latlng, radius);
       const marker = L.marker(e.latlng);
 
       marker.addTo(map);
-      circle.addTo(map);
+      // circle.addTo(map);
     }
 
     map.on('locationfound', onLocationFound);

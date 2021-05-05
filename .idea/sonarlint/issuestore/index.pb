@@ -12,8 +12,6 @@ A
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 ;
 src/test.ts,3\f\3fc80f76f5f2902335ccfa4f7aa372099c7d9f47
-J
-src/app/app.component.html,0\6\06895b2dfff011115a8eded7e3fad29788965566
 ?
 proxy.conf.json,a\9\a9d0241d853eb692fff5c7f7ed7019e0ece47950
 U
@@ -26,32 +24,16 @@ f
 6src/app/shared/components/loading/loading.component.ts,a\7\a730bfe3a4966de5f125bc8a62ffa4e46cf5cacc
 h
 8src/app/shared/components/loading/loading.component.scss,6\a\6ae70a9e50bc48412c26d7bec985fd27c1904324
-O
-src/app/shared/shared.module.ts,7\6\76e4030e4964745a909dcfab91317c1bf0a020aa
-O
-src/app/layout/layout.module.ts,1\a\1aa1683db69441f5beb9294c548d2865983c153d
 ]
 -src/app/layout/sidenav/sidenav.component.scss,8\5\850ed5aaaac64e25b207661c952a324da34b4785
 W
 'src/app/layout/menu/menu.component.scss,5\1\510d0d8eac6473124ee69740e2a963cb0d91dd34
-W
-'src/app/layout/main/main.component.html,c\3\c317985e0b4fa16a8fb9a2b0af46927058ada07f
-]
--src/app/layout/sidenav/sidenav.component.html,6\5\653308350cc09b63d7b6aa4372dada2da94c9b7a
-[
-+src/app/layout/sidenav/sidenav.component.ts,4\d\4dcdd28e5ae3edf6bc1e3fbe51a42403db3928fc
-W
-'src/app/layout/menu/menu.component.html,9\7\978632803d247fa180832d7c6d773fd39a92a5b8
 F
 e2e/protractor.conf.js,1\a\1a16fe2e18a9184f190de09b2409856e085ce408
 `
 0src/app/pages/not-found/not-found.component.html,6\3\633ce60f2662d0556ac0987a21254a8367f2c0f7
 ^
 .src/app/pages/dashboard/dashboard.component.ts,5\7\57c55ac13b21d3b3b024f006c1ad43682d050876
-T
-$src/app/pages/map/map.component.scss,6\d\6ddcdb1e942bda654756eff0d37ea36b1fe3af9c
-Z
-*src/app/pages/mapbox/mapbox.component.html,1\6\16e399320e6c45b7705dc15da7f37e13054ac25e
 >
 mocks/api.json,d\3\d3669b1a9c10761765ae39fbccf17a1bc3dcadc7
 >

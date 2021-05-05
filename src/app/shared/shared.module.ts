@@ -7,5 +7,7 @@ import { ClarityModule } from '@clr/angular';
   declarations: [LoadingComponent],
   exports: [LoadingComponent],
   imports: [CommonModule, ClarityModule],
+  providers: []
+
 })
 export class SharedModule {}

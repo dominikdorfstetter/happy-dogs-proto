@@ -4,12 +4,11 @@ import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { ClarityModule } from '@clr/angular';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [FooterComponent, MainComponent, MenuComponent, SidenavComponent],
+  declarations: [FooterComponent, MainComponent, MenuComponent],
   imports: [CommonModule, ClarityModule, RouterModule],
-  exports: [FooterComponent, MainComponent, MenuComponent, SidenavComponent],
+  exports: [FooterComponent, MainComponent, MenuComponent],
 })
 export class LayoutModule {}
