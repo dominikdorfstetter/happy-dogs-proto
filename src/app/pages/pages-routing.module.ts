@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'map',
-    component: MapComponent,
+    loadChildren: () => import('./map/map-routing.module').then((m) => m.MapRoutingModule),
   },
 ];
 

@@ -25,15 +25,21 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "allowedCommonJsDependencies": ["@clr/angular"],
+            "optimization": {
+              "styles": {
+                "minify": true,
+                "inlineCritical": false
+              },
+              "fonts": false,
+              "scripts": false
+            },
             "styles": [
-              "node_modules/@clr/icons/clr-icons.min.css",
-              "node_modules/@clr/ui/clr-ui.min.css",
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
-              "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
-              "node_modules/@clr/icons/clr-icons.min.js"
+              { "input": "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js" },
+              { "input": "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js" },
+              { "input": "node_modules/@clr/icons/clr-icons.min.js" }
             ]
           },
           "configurations": {
@@ -44,25 +50,20 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": {
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                },
+                "fonts": true,
+                "scripts": true
+              },
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
+              "buildOptimizer": true
             },
             "dev": {
               "fileReplacements": [

@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~leaflet/dist/leaflet.css';
+@import '~@clr/ui/clr-ui.min.css';
+@import '~@clr/icons/clr-icons.min.css';
+
 html {
   /* for 3.0 and later versions, divide the preferred root value by 1.2 to get a pixel
    * equivalency

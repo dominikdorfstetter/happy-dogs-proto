@@ -1,10 +1,10 @@
 // filter MapMarkerResponse Object for a specific property that equals a text and return immutable List of Features
-import {Observable} from 'rxjs/dist/types';
 import {Feature, MapMarkerResponse} from '../models/map-marker.model';
-import {map} from 'rxjs/operators';
-import {List} from 'immutable';
 
 import {Map as LMap, marker as Marker, icon as Icon } from 'leaflet';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {List} from 'immutable';
 
 export const filterByPropertyAndReturnFeatureList = (property: string, text: string) => (data$: Observable<MapMarkerResponse>) =>
   data$.pipe(map<MapMarkerResponse, List<Feature>>((data: MapMarkerResponse) =>
