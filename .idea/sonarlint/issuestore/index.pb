@@ -7,9 +7,6 @@ X
 (src/app/shared/mock/localstorage.mock.ts,3\4\344689b385828e102aee0356bbdb5e03e218aa9f
 A
 e2e/tsconfig.json,2\5\257eaf15472abf1c75cad96435de6fcae14f79a4
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 ;
 src/test.ts,3\f\3fc80f76f5f2902335ccfa4f7aa372099c7d9f47
 ?
@@ -24,8 +21,6 @@ f
 6src/app/shared/components/loading/loading.component.ts,a\7\a730bfe3a4966de5f125bc8a62ffa4e46cf5cacc
 h
 8src/app/shared/components/loading/loading.component.scss,6\a\6ae70a9e50bc48412c26d7bec985fd27c1904324
-]
--src/app/layout/sidenav/sidenav.component.scss,8\5\850ed5aaaac64e25b207661c952a324da34b4785
 W
 'src/app/layout/menu/menu.component.scss,5\1\510d0d8eac6473124ee69740e2a963cb0d91dd34
 F
@@ -46,8 +41,6 @@ O
 src/environments/environment.ts,9\e\9e665cec867bbf89b5afc6420722808938387dc4
 V
 &src/app/shared/services/api.service.ts,8\a\8a4b94282098327e925ba2412a0765ce0f31dbc8
-Y
-)src/app/shared/services/marker.service.ts,7\0\706c05051a4fbee260c07df5d52bef163e945d4b
 >
 .eslintrc.json,7\1\71c20a341bfe32aa5cd5b4384e94f942bab6a7d3
 ;
@@ -56,8 +49,6 @@ Y
 )src/app/shared/models/map-marker.model.ts,c\e\ce688767b3655dddeaf941a00997f6bc701c3da2
 Z
 *src/app/shared/models/street-data.model.ts,8\b\8b615ba056cebade3e8b93b07ffc55543abdabcc
-X
-(src/app/shared/services/marker.helper.ts,1\1\1113c4a96683f69d68c274e6d5e4987e528760b2
 W
 'src/app/layout/main/main.component.scss,c\9\c97aa6a46f53ecb643f6e20d010e97f2fb6a46b9
 U
@@ -66,3 +57,37 @@ B
 tsconfig.spec.json,4\0\40b5dfe3a3abb750bdea34e2682ced72e652a530
 ;
 src/main.ts,1\a\1af9a5bdf96ddff3a2f3427ed520b7005e9564ad
+c
+3src/app/pages/dashboard/dashboard.component.spec.ts,7\9\798a5ba3348a8e8cbf384ade0fd6670d31cccc44
+>
+src/index.html,5\c\5c975582791da6f060261188096d6aad85db6e09
+?
+src/styles.scss,6\a\6a36a191b6d613ce902a6e1beb58b65e8a5136ab
+M
+src/app/app-routing.module.ts,6\f\6fd35c988c6ab19d90be440792fa8c817dd8dc67
+U
+%src/app/pages/pages-routing.module.ts,f\8\f865b6b8490989aadaab9e5a718df25bff763aab
+@
+src/polyfills.ts,f\e\fe9b82c7e120cc22c50f416678a28fbbf084a952
+A
+tsconfig.app.json,4\3\43dc209d69db416f8cba4f9850ff857de70532a2
+R
+"src/app/shared/marker.constants.ts,d\4\d4b98af875dc493ba93e4ba8870cab654f5faa09
+R
+"docker/keycloak/docker-compose.yml,0\c\0ccb0c85cc0bee16355ee8729b39fa44f71fdb96
+J
+src/app/app.component.html,0\6\06895b2dfff011115a8eded7e3fad29788965566
+W
+'src/app/layout/menu/menu.component.html,9\7\978632803d247fa180832d7c6d773fd39a92a5b8
+W
+'src/app/layout/main/main.component.html,c\3\c317985e0b4fa16a8fb9a2b0af46927058ada07f
+<
+angular.json,e\9\e92338c6e49ff34f9022980cc89bbebd60974bad
+O
+src/app/layout/layout.module.ts,1\a\1aa1683db69441f5beb9294c548d2865983c153d
+H
+src/app/app.component.ts,3\0\302be76b17ec3188653bea112207e65dde129e59
+E
+src/app/app.module.ts,0\2\02c004b4329a0d99c45abb61a30dadfde61ecf5d
+O
+src/app/shared/shared.module.ts,7\6\76e4030e4964745a909dcfab91317c1bf0a020aa

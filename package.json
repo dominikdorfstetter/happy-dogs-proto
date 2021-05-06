@@ -31,6 +31,9 @@
     "inject-version": "gulp ng-inject-version",
     "inject-version:dev": "gulp ng-inject-version --configuration=dev",
     "inject-version:prod": "gulp ng-inject-version --configuration=prod",
+    "e2e:run": "cypress run",
+    "e2e:watch": "cypress open",
+    "e2e:ci": "start-server-and-test start http://localhost:4200 cy:run",
     "postinstall": "ngcc"
   },
   "dependencies": {
@@ -72,6 +75,7 @@
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
     "codelyzer": "^6.0.0",
+    "cypress": "^7.0.0",
     "del": "^6.0.0",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "2.22.1",
@@ -90,6 +94,7 @@
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "protractor": "~7.0.0",
+    "start-server-and-test": "^1.12.1",
     "ts-node": "~9.1.1",
     "tslint": "~6.1.0",
     "tslint-config-prettier": "^1.18.0",

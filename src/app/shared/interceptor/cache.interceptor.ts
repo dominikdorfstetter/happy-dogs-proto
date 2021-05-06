@@ -9,6 +9,7 @@ export class CacheInterceptor implements HttpInterceptor {
   private cache: Map<HttpRequest<any>, HttpResponse<any>> = Map();
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    debugger;
     if (req.method !== 'GET') {
       return next.handle(req);
     }
@@ -22,7 +23,7 @@ export class CacheInterceptor implements HttpInterceptor {
       return next.handle(req).pipe(
         tap(stateEvent => {
           if (stateEvent instanceof HttpResponse) {
-            this.cache.set(req, stateEvent.clone());
+            this.cache = this.cache.set(req, stateEvent.clone());
           }
         }),
         share());

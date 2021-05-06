@@ -23,9 +23,4 @@ const routes: Routes = [
     ]
   }
 )
-export class MapRoutingModule {
-
-  constructor() {
-  }
-
-}
+export class MapRoutingModule {}

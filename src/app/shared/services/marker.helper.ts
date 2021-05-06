@@ -22,4 +22,6 @@ const addMarkerToMap = (karte: LMap, [lat, lng]: number[], icon: Icon): void => 
 };
 
 // Adds a Feature to the map
-export const addToMap = (karte: LMap, icon: any) => (el: Feature) => addMarkerToMap(karte, el.geometry.coordinates, icon);
+export const addToMap = (karte: LMap, icon: any) => (el: Feature) => {
+  addMarkerToMap(karte, el.geometry.coordinates, icon);
+};

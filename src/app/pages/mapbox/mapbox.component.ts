@@ -23,6 +23,11 @@ export class MapBoxComponent implements OnInit, AfterViewInit {
     // this.apiS.addPoobags(this.mapbox);
   }
 
+  stopFollow() {
+    const map = this.map;
+    map.stopLocate();
+  }
+
   private initMap(): void {
     this.map = L.map('map', {
       zoomControl: false,
@@ -54,12 +59,16 @@ export class MapBoxComponent implements OnInit, AfterViewInit {
       setView: true,
       watch: true,
       timeout: 60000,
-      enableHighAccuracy: true
+      enableHighAccuracy: true,
+      animate: true,
+      maxZoom: 19,
+      minZoom: 16,
+      noMoveStart: true
     });
 
     // eslint-disable-next-line
     function onLocationFound(e) {
-      const radius = e.accuracy / 2;
+      //const radius = e.accuracy / 2;
       //const circle = L.circle(e.latlng, radius);
       const marker = L.marker(e.latlng);
 
@@ -68,5 +77,15 @@ export class MapBoxComponent implements OnInit, AfterViewInit {
     }
 
     map.on('locationfound', onLocationFound);
+
+    map.on('zoomend', () => {
+      const clusters = [];
+      map.eachLayer((l) => {
+        if( l instanceof L.Marker && map.getBounds().contains(l.getLatLng()) )
+          {clusters.push(l);}
+      });
+      // do something with clusters such as cluster[0].spiderfy()
+      console.log(clusters);
+    });
   }
 }

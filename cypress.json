@@ -1,0 +1,12 @@
+{
+  "pageLoadTimeout": 30000,
+  "baseUrl": "http://localhost:4200",
+  "integrationFolder": "cypress/integration",
+  "supportFile": "cypress/support/index.ts",
+  "pluginsFile": "cypress/plugins/index.ts",
+  "fixturesFolder": "cypress/fixtures",
+  "videosFolder": "cypress/runs/videos",
+  "screenshotsFolder": "cypress/runs/screenshots",
+  "downloadsFolder": "cypress/runs/downloads",
+  "trashAssetsBeforeRuns": true
+}
